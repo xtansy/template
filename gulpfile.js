@@ -9,11 +9,13 @@ const browserSync = bs.create();
 // dest создает поток записи
 //===================================
 
-import { html, clear, config, css, scss } from "./tasks/index.js";
+import { html, clear, config, js, scss, img } from "./tasks/index.js";
 
 const watcher = () => {
     watch(config.html.watch, html).on("change", browserSync.reload);
     watch(config.scss.watch, scss).on("change", browserSync.reload);
+    watch(config.js.watch, js).on("change", browserSync.reload);
+    watch(config.img.watch, img).on("change", browserSync.reload);
 };
 
 const server = () => {
@@ -26,6 +28,6 @@ const server = () => {
 
 export const dev = series(
     clear,
-    parallel(html, scss),
+    parallel(html, scss, js, img),
     parallel(watcher, server)
 );
