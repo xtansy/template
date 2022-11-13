@@ -8,10 +8,10 @@ import webpHtml from "gulp-webp-html";
 import { config } from "./index.js";
 
 export const html = () => {
-    return src(config.html.root)
+    return src(config.paths.html.root)
         .pipe(plumber())
         .pipe(fileinclude())
         .pipe(webpHtml())
-        .pipe(htmlmin(config.htmlmin))
-        .pipe(dest(config.pathDest));
+        .pipe(htmlmin(config.plugins.htmlmin))
+        .pipe(dest(config.paths.pathDest));
 };

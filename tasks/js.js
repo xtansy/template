@@ -6,9 +6,9 @@ import webpack from "webpack-stream";
 import { config } from "./index.js";
 
 export const js = () => {
-    return src(config.js.root, config.sourcemaps)
+    return src(config.paths.js.root, config.plugins.sourcemaps)
         .pipe(plumber())
         .pipe(babel())
-        .pipe(webpack(config.webpack))
-        .pipe(dest(config.pathDest, config.sourcemaps));
+        .pipe(webpack(config.plugins.webpack))
+        .pipe(dest(config.paths.pathDest, config.plugins.sourcemaps));
 };

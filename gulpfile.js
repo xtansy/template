@@ -1,5 +1,5 @@
 import pkg from "gulp";
-const { watch, parallel, series } = pkg;
+const { watch, parallel, series, task } = pkg;
 import bs from "browser-sync";
 const browserSync = bs.create();
 
@@ -9,25 +9,26 @@ const browserSync = bs.create();
 // dest создает поток записи
 //===================================
 
-import { html, clear, config, js, scss, img } from "./tasks/index.js";
+import { html, clear, config, js, scss, img, fonts } from "./tasks/index.js";
 
 const watcher = () => {
-    watch(config.html.watch, html).on("change", browserSync.reload);
-    watch(config.scss.watch, scss).on("change", browserSync.reload);
-    watch(config.js.watch, js).on("change", browserSync.reload);
-    watch(config.img.watch, img).on("change", browserSync.reload);
+    watch(config.paths.html.watch, html).on("change", browserSync.reload);
+    watch(config.paths.scss.watch, scss).on("change", browserSync.reload);
+    watch(config.paths.js.watch, js).on("change", browserSync.reload);
+    watch(config.paths.img.watch, img).on("change", browserSync.reload);
+    watch(config.paths.fonts.watch, fonts).on("change", browserSync.reload);
 };
 
 const server = () => {
     return browserSync.init({
         server: {
-            baseDir: config.pathDest,
+            baseDir: config.paths.pathDest,
         },
     });
 };
 
-export const dev = series(
-    clear,
-    parallel(html, scss, js, img),
-    parallel(watcher, server)
-);
+const build = series(clear, parallel(html, scss, js, img, fonts));
+
+const dev = series(build, parallel(watcher, server));
+
+task("default", config.isProd ? build : dev);

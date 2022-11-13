@@ -16,7 +16,7 @@ import webpCss from "gulp-webp-css";
 import { config } from "./index.js";
 
 export const scss = () => {
-    return src(config.scss.root, config.sourcemaps)
+    return src(config.paths.scss.root, config.plugins.sourcemaps)
         .pipe(plumber())
         .pipe(glob())
         .pipe(sass())
@@ -24,8 +24,8 @@ export const scss = () => {
         .pipe(autoprefixer())
         .pipe(shorthand())
         .pipe(gcmq())
-        .pipe(dest(config.pathDest, config.sourcemaps))
+        .pipe(dest(config.paths.pathDest, config.plugins.sourcemaps))
         .pipe(rename({ suffix: ".min" }))
         .pipe(csso())
-        .pipe(dest(config.pathDest, config.sourcemaps));
+        .pipe(dest(config.paths.pathDest, config.plugins.sourcemaps));
 };

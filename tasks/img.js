@@ -8,15 +8,15 @@ import webp from "gulp-webp";
 import { config } from "./index.js";
 
 export const img = () => {
-    return src(config.img.root)
+    return src(config.paths.img.root)
         .pipe(plumber())
 
-        .pipe(newer(config.img.dest))
+        .pipe(newer(config.paths.img.dest))
         .pipe(webp())
-        .pipe(dest(config.img.dest))
+        .pipe(dest(config.paths.img.dest))
 
-        .pipe(src(config.img.root))
-        .pipe(newer(config.img.dest))
+        .pipe(src(config.paths.img.root))
+        .pipe(newer(config.paths.img.dest))
         .pipe(imagemin())
-        .pipe(dest(config.img.dest));
+        .pipe(dest(config.paths.img.dest));
 };

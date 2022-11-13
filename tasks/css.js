@@ -12,16 +12,16 @@ import gcmq from "gulp-group-css-media-queries";
 import { config } from "./index.js";
 
 export const css = () => {
-    return src(config.css.root, config.sourcemaps)
+    return src(config.paths.css.root, config.plugins.sourcemaps)
         .pipe(plumber())
         .pipe(concut("main.css"))
         .pipe(autoprefixer())
         .pipe(shorthand())
         .pipe(gcmq())
         .pipe(size({ title: "CSS До сжатия" }))
-        .pipe(dest(config.pathDest, config.sourcemaps))
+        .pipe(dest(config.paths.pathDest, config.plugins.sourcemaps))
         .pipe(rename({ suffix: ".min" }))
         .pipe(csso())
         .pipe(size({ title: "CSS После сжатия" }))
-        .pipe(dest(config.pathDest, config.sourcemaps));
+        .pipe(dest(config.paths.pathDest, config.plugins.sourcemaps));
 };

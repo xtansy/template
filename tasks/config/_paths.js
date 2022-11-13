@@ -1,7 +1,7 @@
 const pathSrc = "./src";
 const pathDest = "./public";
 
-export const config = {
+export const paths = {
     pathSrc,
     pathDest,
 
@@ -31,15 +31,9 @@ export const config = {
         dest: `${pathDest}/img`,
     },
 
-    htmlmin: {
-        collapseWhitespace: true,
-    },
-
-    webpack: {
-        mode: "production",
-    },
-
-    sourcemaps: {
-        sourcemaps: true,
+    fonts: {
+        root: `${pathSrc}/fonts/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}`,
+        watch: `${pathSrc}/fonts/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}`,
+        dest: `${pathDest}/fonts`,
     },
 };
