@@ -1,1 +1,2 @@
-.page1{display:-webkit-box;display:-ms-flexbox;display:flex}.img{width:500px;height:500px;background:url(img/img1.jpg)}.page2{display:block}.global{font-size:15px}@supports (-webkit-appearance:none){.img{background:url(img/img1.webp)}}@media screen and (min-width:900px){article{padding:1rem 3rem}h2{font-size:228px}}
+.global{font-size:15px}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0eWxlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUEsTyxDQUNJLGMiLCJmaWxlIjoic3R5bGUubWluLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5cclxuLmdsb2JhbCB7XHJcbiAgICBmb250LXNpemU6IDE1cHg7XHJcbn1cclxuIl19 */

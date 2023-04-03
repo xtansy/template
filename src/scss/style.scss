@@ -1,5 +1,8 @@
-@import "./page/*.scss";
+@import "./utils/*.scss";
+@import "./_variables.scss";
 
-.global {
-    font-size: 15px;
+@import "./components/**/*.scss";
+
+* {
+    font-family: "Metropolis";
 }
