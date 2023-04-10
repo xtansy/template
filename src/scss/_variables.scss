@@ -22,3 +22,5 @@ $white: white;
 ._container {
     @include container($containerWidthLarge);
 }
+
+@media screen and (max-width: 768px) {}
